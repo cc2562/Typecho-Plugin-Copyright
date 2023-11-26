@@ -5,7 +5,7 @@ if (!defined('__TYPECHO_ROOT_DIR__')) exit;
  * Copyright for Typecho 修改版
  *
  * @package Copyright
- * @author  Yves X
+ * @author  mikusa
  * @version 1.0.6
  * @link https://github.com/mikusaa/Copyright-for-Typecho
  */
@@ -148,7 +148,9 @@ class Copyright_Plugin implements Typecho_Plugin_Interface {
         $t_url = '';
         if ($cr['is_enable']) {
             if ($cr['author']) {
-                $t_author = '<p class="content-copyright"><strong>本文作者：</strong>' . $cr['author'] . '</p>';
+                $parsedAuthor = Typecho_Widget::widget('Widget_Abstract_Contents')->markdown($cr['author']);
+                $parsedAuthor = strip_tags($parsedAuthor, '<a><em><strong>');  // 保留链接和强调标签
+                $t_author = '<p class="content-copyright"><strong>本文作者：</strong>' . $parsedAuthor . '</p>';
             }
             if ($cr['url']) {
                 if ($cr['is_original']) {
