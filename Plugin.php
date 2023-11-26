@@ -6,7 +6,7 @@ if (!defined('__TYPECHO_ROOT_DIR__')) exit;
  *
  * @package Copyright
  * @author  Yves X
- * @version 1.0.5
+ * @version 1.0.6
  * @link https://github.com/mikusaa/Copyright-for-Typecho
  */
 
@@ -158,7 +158,9 @@ class Copyright_Plugin implements Typecho_Plugin_Interface {
                 }
             }
             if ($cr['cover']) {
-                $t_cover = '<p class="content-copyright"><strong>封面出处：</strong>' . $cr['cover'] . '</p>';
+                $parsedCover = Typecho_Widget::widget('Widget_Abstract_Contents')->markdown($cr['cover']);
+                $parsedCover = strip_tags($parsedCover, '<a><em><strong>');  // 保留链接和强调标签
+                $t_cover = '<p class="content-copyright"><strong>封面出处：</strong>' . $parsedCover . '</p>';
             }
             if ($cr['notice']) {
                 $t_notice = '<p class="content-copyright"><strong>版权声明：</strong>' . $cr['notice'] . '</p>';
