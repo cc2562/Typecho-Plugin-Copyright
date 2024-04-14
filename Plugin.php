@@ -52,21 +52,18 @@ if (!defined('__TYPECHO_ROOT_DIR__')) {
      * @return void
      */
     public static function config(Form $form): void {
-        echo '<p>欢迎使用 Typecho 版权插件，你正在使用的是增加了“<strong>封面来源</strong>”的修改版。（还有一些颜色上的修改）</p>';
+        echo '<p>欢迎使用 Typecho 版权插件，你正在使用的是增加了「<strong>封面来源</strong>」的修改版本，并简单 <s>利用复制粘贴</s> 适配了 Typecho 1.2、<s>靠 chatgpt </s>支持了markdown 语法。</p>';
+        echo '<hr />';
         echo '<p>此插件帮助你设置文章与独立页面的版权声明，它会附在内容末尾。你也可以对特定某篇内容设置版权信息。</p>';
         echo '<p>版权信息借助插件与 Typecho 的自定义字段功能实现，只与插件或特定内容关联，而不会修改其内容本身，也不会在数据库中与文本混同。</p>';
         echo '<hr />';
-        echo '<p>此处为<b>全局设置</b></p>';
-        echo '<p>如需对特定某篇内容设置版权信息，请参阅<b><a href="https://github.com/Yves-X/Copyright-for-Typecho">详细说明</a></b>';
-        echo '<p>特定设置的优先级始终高于全局设置，所以如果你给某篇文章单独设置了版权信息，你所设置的部分将会覆盖全局设置</p>';
-        echo '<hr />';
-        echo '作者曾有很长一段时间没有维护此插件，这期间它随 Typecho 1.1 更新而失效。感谢该网友修复了此插件，使得它可以在 Typecho 1.1 下继续工作：<a href="https://lolico.moe" target="_blank">神代綺凜</a>';
+        echo '<p>此处为<b>全局设置</b>，如需对特定某篇内容设置版权信息，请参阅<b><a href="https://github.com/Yves-X/Copyright-for-Typecho">详细说明</a></b>。特定设置的优先级始终高于全局设置，因此如果你为某篇文章单独设置了版权信息，那么设置的部分将会覆盖全局设置。</p>';
         echo '<hr />';
 
-        $author = new Text('author', NULL, _t('作者名称'), _t('作者'));
+        $author = new Text('author', NULL, _t('作者名称'), _t('作者（支持 markdown 语法）'));
         $form->addInput($author);
 
-        $notice = new Text('notice', NULL, _t('转载时须注明出处及本声明'), _t('声明'));
+        $notice = new Text('notice', NULL, _t('转载时须注明出处及本声明'), _t('声明（支持 markdown 语法）'));
         $form->addInput($notice);
 
         $showURL = new Form\Element\Radio('showURL', array('1' => _t('启用'),'0' => _t('不启用'),), '0', _t('显示原（本）文链接'));
