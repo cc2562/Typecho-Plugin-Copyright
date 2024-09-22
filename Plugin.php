@@ -183,7 +183,8 @@ if (!defined('__TYPECHO_ROOT_DIR__')) {
             }
             $copyright_html = '<style>p.content-copyright {
     color: var(--theme-color, #07F);margin: 0.5rem 0.5rem 0.5rem;    line-height: 1;
-}</style><hr class="content-copyright" style="margin-top:50px" /><div class="ArtinArt" style="">' . $t_author . $t_url . $t_cover . $t_notice .'</blockquote>';
+}</style><hr class="content-copyright" style="margin-top:50px" /><div class="ArtinArt" style="    width: 100%;
+    margin: 10px;">' . $t_author . $t_url . $t_cover . $t_notice .'</blockquote>';
         }
         return $copyright_html;
     }

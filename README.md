@@ -1,4 +1,4 @@
-# Copyright for Typecho 自用版
+# Copyright for Typecho 自用版 Gz主题适配版本
 
 这是一个 [Typecho](https://github.com/typecho/typecho) 插件，具体设置请看[原始文档说明](https://github.com/Yves-X/Copyright-for-Typecho)。
 
