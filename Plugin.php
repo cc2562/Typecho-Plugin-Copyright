@@ -164,24 +164,26 @@ if (!defined('__TYPECHO_ROOT_DIR__')) {
             if ($cr['author']) {
                 $parsedAuthor = \Typecho\Widget::widget('Widget_Abstract_Contents')->markdown($cr['author']);
                 $parsedAuthor = strip_tags($parsedAuthor, '<a><em><strong>');  // 保留链接和强调标签
-                $t_author = '<p class="content-copyright"><strong>本文作者：</strong>' . $parsedAuthor . '</p>';
+                $t_author = '<p class="content-copyright">本文作者：' . $parsedAuthor . '</p>';
             }
             if ($cr['url']) {
                 if ($cr['is_original']) {
-                    $t_url = '<p class="content-copyright"><strong>本文链接：</strong><a class="content-copyright" href="' . $cr['url'] . '">' . $cr['url'] . '</a></p>';
+                    $t_url = '<p class="content-copyright">本文链接：<a class="content-copyright" href="' . $cr['url'] . '">' . $cr['url'] . '</a></p>';
                 } else {
-                    $t_url = '<p class="content-copyright"><strong>原文链接：</strong><a class="content-copyright" target="_blank" href="' . $cr['url'] . '">' . $cr['url'] . '</a></p>';
+                    $t_url = '<p class="content-copyright">原文链接：<a class="content-copyright" target="_blank" href="' . $cr['url'] . '">' . $cr['url'] . '</a></p>';
                 }
             }
             if ($cr['cover']) {
                 $parsedCover = \Typecho\Widget::widget('Widget_Abstract_Contents')->markdown($cr['cover']);
                 $parsedCover = strip_tags($parsedCover, '<a><em><strong>');  // 保留链接和强调标签
-                $t_cover = '<p class="content-copyright"><strong>封面出处：</strong>' . $parsedCover . '</p>';
+                $t_cover = '<p class="content-copyright">封面出处：' . $parsedCover . '</p>';
             }
             if ($cr['notice']) {
-                $t_notice = '<p class="content-copyright"><strong>版权声明：</strong>' . $cr['notice'] . '</p>';
+                $t_notice = '<p class="content-copyright">版权声明：' . $cr['notice'] . '</p>';
             }
-            $copyright_html = '<hr class="content-copyright" style="margin-top:50px" /><blockquote class="content-copyright" style="font-style:normal;font-size: 95%;border-left: 4px solid #ff5268;margin: 50px -15px 0 -15px;padding: 1px 20px 1px 20px;">' . $t_author . $t_url . $t_cover . $t_notice .'</blockquote>';
+            $copyright_html = '<style>p.content-copyright {
+    color: var(--theme-color, #07F);margin: 0.5rem 0.5rem 0.5rem;    line-height: 1;
+}</style><hr class="content-copyright" style="margin-top:50px" /><div class="ArtinArt" style="">' . $t_author . $t_url . $t_cover . $t_notice .'</blockquote>';
         }
         return $copyright_html;
     }
